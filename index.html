@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,25 +10,118 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <meta
-        name="description"
-        content="AI Matrix Institute provides practical education in Python, Data Analytics, Machine Learning, Artificial Intelligence, AI Engineering and Agentic AI."
-    >
+
+    <!-- =========================================================
+         SEO
+         ========================================================= -->
+
+    <title>
+        AI Matrix Institute | AI, Python, Data Analytics &amp; Machine Learning
+    </title>
+
 
     <meta
-        name="keywords"
-        content="AI Matrix Institute, Python, Data Analytics, Machine Learning, Artificial Intelligence, Generative AI, Agentic AI"
+        name="description"
+        content="AI Matrix Institute offers practical education in Python, Data Analytics, Machine Learning, Artificial Intelligence, AI Engineering and Agentic AI through structured, hands-on learning."
     >
+
 
     <meta
         name="author"
         content="AI Matrix Institute"
     >
 
-    <title>
-        AI Matrix Institute | Learn AI. Build the Future.
-    </title>
 
+    <!-- =========================================================
+         CANONICAL URL
+         ========================================================= -->
+
+    <link
+        rel="canonical"
+        href="https://aimatrixinstitute.com/"
+    >
+
+
+    <!-- =========================================================
+         OPEN GRAPH
+         ========================================================= -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+
+    <meta
+        property="og:title"
+        content="AI Matrix Institute | AI, Python, Data Analytics &amp; Machine Learning"
+    >
+
+
+    <meta
+        property="og:description"
+        content="Practical, structured education in Python, Data Analytics, Machine Learning, Artificial Intelligence, AI Engineering and Agentic AI."
+    >
+
+
+    <meta
+        property="og:url"
+        content="https://aimatrixinstitute.com/"
+    >
+
+
+    <meta
+        property="og:site_name"
+        content="AI Matrix Institute"
+    >
+
+
+    <meta
+        property="og:locale"
+        content="en_IN"
+    >
+
+
+    <!-- =========================================================
+         TWITTER / X
+         ========================================================= -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+
+    <meta
+        name="twitter:title"
+        content="AI Matrix Institute | AI, Python, Data Analytics &amp; Machine Learning"
+    >
+
+
+    <meta
+        name="twitter:description"
+        content="Practical, structured education in Python, Data Analytics, Machine Learning, Artificial Intelligence, AI Engineering and Agentic AI."
+    >
+
+
+    <!-- =========================================================
+         ORGANIZATION STRUCTURED DATA
+         ========================================================= -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "AI Matrix Institute",
+        "url": "https://aimatrixinstitute.com/",
+        "description": "AI Matrix Institute provides practical education in Python, Data Analytics, Machine Learning, Artificial Intelligence, AI Engineering and Agentic AI."
+    }
+    </script>
+
+
+    <!-- =========================================================
+         STYLESHEET
+         ========================================================= -->
 
     <link
         rel="stylesheet"
@@ -35,18 +129,22 @@
     >
 
 
-    <!-- Google Fonts -->
+    <!-- =========================================================
+         GOOGLE FONTS
+         ========================================================= -->
 
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
     >
 
+
     <link
         rel="preconnect"
-        href="https://fonts.googleapis.com"
+        href="https://fonts.gstatic.com"
         crossorigin
     >
+
 
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
@@ -1098,6 +1196,25 @@
 
             margin-top:
                 19px;
+
+        }
+
+
+
+        /* =====================================================
+           HOMEPAGE ENQUIRE BUTTON
+           Keep button visually identical to CTA links.
+           ===================================================== */
+
+        .cta-section .btn-outline-light {
+
+            border: none;
+
+            font: inherit;
+
+            cursor: pointer;
+
+            text-align: center;
 
         }
 
@@ -2650,14 +2767,20 @@
                     </a>
 
 
-                    <a
-                        href="enroll.html"
+                    <!-- =================================================
+                         ENQUIRE NOW
+                         Opens the existing enquiry popup
+                         ================================================= -->
+
+                    <button
+                        type="button"
                         class="btn btn-outline-light"
+                        data-enquiry-open
                     >
 
-                        Enroll Now
+                        Enquire Now
 
-                    </a>
+                    </button>
 
                 </div>
 
