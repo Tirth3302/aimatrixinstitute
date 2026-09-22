@@ -1,0 +1,5451 @@
+/* =========================================================
+   AI MATRIX INSTITUTE
+   Main Stylesheet
+   ========================================================= */
+
+
+/* ================= ROOT ================= */
+
+:root {
+
+    --cream: #F7F3EA;
+    --cream-dark: #EEE8DB;
+
+    --white: #FFFFFF;
+
+    --black: #171717;
+    --black-soft: #252525;
+
+    --gray: #66635D;
+    --gray-light: #A6A19A;
+
+    --gold: #B88632;
+    --gold-light: #D8B56A;
+    --gold-pale: #E8DCC4;
+
+    --border: rgba(23, 23, 23, 0.12);
+
+    --container: 1200px;
+
+    --radius: 18px;
+    --radius-small: 10px;
+
+}
+
+
+/* ================= RESET ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+
+    /* Prevents fixed navbar from covering
+       sections when using anchor links */
+    scroll-padding-top: 100px;
+}
+
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--cream);
+    color: var(--black);
+    line-height: 1.6;
+    overflow-x: hidden;
+
+    /*
+     * Navbar is fixed, so reserve its height
+     * in the normal document flow.
+     */
+    padding-top: 88px;
+}
+
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+.container {
+    width: min(90%, var(--container));
+    margin: auto;
+}
+
+
+.section {
+    padding: 110px 0;
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+h3 {
+    line-height: 1.1;
+}
+
+
+h1,
+h2 {
+    font-family: "Playfair Display", serif;
+    font-weight: 600;
+}
+
+
+h1 {
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    letter-spacing: -0.045em;
+}
+
+
+h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    letter-spacing: -0.035em;
+}
+
+
+h3 {
+    font-size: 1.3rem;
+}
+
+
+p {
+    color: var(--gray);
+}
+
+
+/* =========================================================
+   SHARED NAVBAR
+   ========================================================= */
+
+.site-navbar,
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+
+    background: rgba(247, 243, 234, 0.94);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.nav-container {
+    width: min(94%, 1380px);
+    margin: auto;
+    min-height: 88px;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    position: relative;
+}
+
+
+/* ================= BRAND ================= */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-right: auto;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+
+.brand img,
+.brand-logo {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1;
+}
+
+
+.brand-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+}
+
+
+.brand-subtitle {
+    margin-top: 5px;
+    font-size: 0.55rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    white-space: nowrap;
+}
+
+
+/* ================= CENTER NAVIGATION ================= */
+
+.desktop-nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    white-space: nowrap;
+}
+
+
+.desktop-nav a {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+    position: relative;
+    padding: 5px 0;
+}
+
+
+.desktop-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: 0.3s;
+}
+
+
+.desktop-nav a:hover,
+.desktop-nav a.active {
+    color: var(--black);
+}
+
+
+.desktop-nav a:hover::after,
+.desktop-nav a.active::after {
+    width: 100%;
+}
+
+
+/* ================= ENQUIRE BUTTON ================= */
+
+.nav-enroll {
+    margin-left: auto;
+    background: var(--black);
+    color: var(--white);
+    padding: 13px 22px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius-small);
+    transition: 0.3s;
+    flex-shrink: 0;
+
+    border: none;
+    font-family: inherit;
+    line-height: normal;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+
+.nav-enroll:hover {
+    background: var(--gold);
+}
+
+
+/* ================= MOBILE MENU BUTTON ================= */
+
+.menu-toggle,
+.mobile-menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 5px;
+}
+
+
+.menu-toggle span,
+.mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--black);
+    margin: 5px;
+}
+
+
+/* ================= MOBILE NAVIGATION ================= */
+
+.mobile-nav {
+    display: none;
+}
+
+
+.mobile-nav.open {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    min-height: calc(100vh - 88px);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: rgba(216, 181, 106, 0.12);
+    filter: blur(100px);
+    top: -250px;
+    right: -150px;
+}
+
+
+.hero-container {
+    width: min(90%, 1250px);
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 50px;
+    padding: 90px 0;
+}
+
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    margin-bottom: 28px;
+}
+
+
+.eyebrow-line {
+    width: 35px;
+    height: 1px;
+    background: var(--gold);
+}
+
+
+.hero h1 {
+    max-width: 760px;
+}
+
+
+.hero h1 span {
+    display: block;
+    color: var(--gold);
+}
+
+
+.hero-description {
+    max-width: 650px;
+    font-size: 1.1rem;
+    margin-top: 30px;
+}
+
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 38px;
+}
+
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 16px 27px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border-radius: var(--radius-small);
+    transition: 0.3s;
+}
+
+
+.btn-primary {
+    background: var(--black);
+    color: white;
+}
+
+
+.btn-primary:hover {
+    background: var(--gold);
+    transform: translateY(-2px);
+}
+
+
+.btn-secondary {
+    border: 1px solid var(--border);
+}
+
+
+.btn-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+
+.hero-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 35px;
+    font-size: 0.78rem;
+    color: var(--gray);
+}
+
+
+.gold-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   HERO VISUAL
+   AI MATRIX / INTERCONNECTED LEARNING DOMAINS
+   ========================================================= */
+
+.hero-matrix-visual {
+    min-height: 520px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+/* ================= DECORATIVE ORBITS ================= */
+
+.matrix-orbit {
+    position: absolute;
+    border: 1px solid rgba(184, 134, 50, 0.18);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+
+.matrix-orbit-one {
+    width: 430px;
+    height: 430px;
+    transform: rotate(15deg);
+}
+
+
+.matrix-orbit-two {
+    width: 340px;
+    height: 340px;
+    transform: rotate(-25deg);
+    border-color: rgba(216, 181, 106, 0.22);
+}
+
+
+.matrix-orbit-three {
+    width: 550px;
+    height: 210px;
+    transform: rotate(-25deg);
+    border-color: rgba(184, 134, 50, 0.12);
+}
+
+
+/* ================= VISUAL HEADER ================= */
+
+.matrix-visual-header {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    right: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 8;
+}
+
+
+.matrix-visual-header span:first-child {
+    color: var(--gold);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+}
+
+
+.matrix-visual-header span:last-child {
+    color: var(--gray-light);
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+
+/* ================= CONNECTION SYSTEM ================= */
+
+.matrix-connections {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+.matrix-line {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(184, 134, 50, 0.38),
+        transparent
+    );
+    transform-origin: center;
+}
+
+
+.matrix-line-top {
+    width: 175px;
+    top: 27%;
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg);
+}
+
+
+.matrix-line-left {
+    width: 155px;
+    top: 50%;
+    left: 18%;
+    transform: rotate(26deg);
+}
+
+
+.matrix-line-right {
+    width: 155px;
+    top: 50%;
+    right: 18%;
+    transform: rotate(-26deg);
+}
+
+
+.matrix-line-bottom {
+    width: 175px;
+    bottom: 27%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.matrix-line-diagonal-left {
+    width: 170px;
+    top: 50%;
+    left: 25%;
+    transform: rotate(-25deg);
+}
+
+
+.matrix-line-diagonal-right {
+    width: 170px;
+    top: 50%;
+    right: 25%;
+    transform: rotate(25deg);
+}
+
+
+/* ================= CONNECTION NODES ================= */
+
+.matrix-connections::before,
+.matrix-connections::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold-light);
+    box-shadow:
+        0 0 0 5px rgba(216, 181, 106, 0.08);
+}
+
+
+.matrix-connections::before {
+    top: 27%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.matrix-connections::after {
+    bottom: 27%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+
+/* ================= LEARNING DOMAIN NODES ================= */
+
+.matrix-domain {
+    position: absolute;
+    min-width: 125px;
+    padding: 13px 15px;
+    background: rgba(255, 255, 255, 0.68);
+    border: 1px solid rgba(184, 134, 50, 0.28);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    z-index: 5;
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+}
+
+
+.matrix-domain:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow:
+        0 12px 30px rgba(23, 23, 23, 0.08);
+}
+
+
+.matrix-domain-number {
+    display: block;
+    color: var(--gold);
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    margin-bottom: 5px;
+}
+
+
+.matrix-domain-name {
+    display: block;
+    color: var(--black);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+}
+
+
+/* ================= DOMAIN POSITIONS ================= */
+
+.matrix-domain-programming {
+    top: 21%;
+    left: 8%;
+}
+
+
+.matrix-domain-data {
+    top: 39%;
+    left: 2%;
+}
+
+
+.matrix-domain-ml {
+    top: 68%;
+    left: 12%;
+}
+
+
+.matrix-domain-genai {
+    top: 39%;
+    right: 2%;
+}
+
+
+.matrix-domain-automation {
+    top: 68%;
+    right: 12%;
+}
+
+
+/* ================= CENTRAL AI CORE ================= */
+
+.matrix-core {
+    width: 165px;
+    height: 165px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.matrix-core-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(184, 134, 50, 0.45);
+}
+
+
+.matrix-core-ring-one {
+    width: 165px;
+    height: 165px;
+}
+
+
+.matrix-core-ring-two {
+    width: 130px;
+    height: 130px;
+    border-color: rgba(216, 181, 106, 0.32);
+}
+
+
+/* =========================================================
+   CENTRAL BLACK CIRCLE
+   ========================================================= */
+
+.matrix-core-inner {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: var(--black);
+    border: 1px solid var(--gold);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /*
+     * Important:
+     * Prevents the institute name from ever
+     * visually escaping the black circle.
+     */
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 35px rgba(23, 23, 23, 0.12);
+
+    position: relative;
+    z-index: 3;
+}
+
+
+/* ================= INNER GOLD RING ================= */
+
+.matrix-core-inner::before {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    border-radius: 50%;
+    border: 1px solid rgba(216, 181, 106, 0.20);
+
+    /*
+     * The decorative ring should not interfere
+     * with the institute name.
+     */
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CENTRAL AI MATRIX INSTITUTE LABEL
+   ========================================================= */
+
+.matrix-core-label {
+    width: 72px;
+    max-width: 72px;
+
+    color: var(--gold-light);
+
+    font-family: "Playfair Display", serif;
+
+    /*
+     * Reduced from 2.1rem.
+     * The previous size was too large for
+     * the 88px black circle.
+     */
+    font-size: 0.82rem;
+
+    font-weight: 600;
+
+    /*
+     * Allows:
+     * AI MATRIX
+     * INSTITUTE
+     *
+     * to remain inside the circle.
+     */
+    line-height: 0.95;
+
+    text-align: center;
+
+    letter-spacing: -0.025em;
+
+    /*
+     * Keeps the text visually centered
+     * within the black core.
+     */
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+
+    position: relative;
+    z-index: 4;
+}
+
+
+/* ================= VISUAL FOOTER ================= */
+
+.matrix-visual-footer {
+    position: absolute;
+    bottom: 17px;
+    left: 18px;
+    right: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 8;
+}
+
+
+.matrix-visual-footer > span {
+    color: var(--gray-light);
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    white-space: nowrap;
+}
+
+
+.matrix-visual-footer > span:last-child {
+    color: var(--gold);
+}
+
+
+.matrix-footer-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(184, 134, 50, 0.25);
+}
+
+
+/* =========================================================
+   INTRO STRIP
+   ========================================================= */
+
+.intro-strip {
+    background: var(--black);
+    color: white;
+    padding: 90px 0;
+}
+
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+}
+
+
+.small-label {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+}
+
+
+.intro-strip h2 {
+    max-width: 600px;
+}
+
+
+.intro-strip h2 span {
+    color: var(--gold-light);
+}
+
+
+.intro-text {
+    border-left: 1px solid rgba(216, 181, 106, 0.4);
+    padding-left: 35px;
+}
+
+
+.intro-text p {
+    color: #bcb8b0;
+    font-size: 1.05rem;
+}
+
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+
+.section-heading h2 {
+    max-width: 650px;
+}
+
+
+.section-heading h2 span {
+    color: var(--gold);
+}
+
+
+.text-link {
+    color: var(--gold);
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   DOMAIN CARDS
+   ========================================================= */
+
+.domain-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+
+.domain-card {
+    background: rgba(255,255,255,0.38);
+    border: none;
+    border-bottom: 1px solid var(--border);
+    padding: 35px;
+    min-height: 330px;
+    position: relative;
+    border-radius: var(--radius);
+}
+
+
+.card-number {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 0.7rem;
+    color: #aaa;
+}
+
+
+.domain-icon {
+    width: 55px;
+    height: 55px;
+    border: 1px solid var(--gold);
+    border-radius: var(--radius-small);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--gold);
+    font-size: 0.68rem;
+    font-weight: 700;
+    margin-bottom: 35px;
+}
+
+
+.domain-card h3 {
+    margin-bottom: 15px;
+}
+
+
+.domain-card p {
+    font-size: 0.9rem;
+    max-width: 300px;
+}
+
+
+.card-link {
+    position: absolute;
+    bottom: 30px;
+    left: 35px;
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+
+.card-link span {
+    margin-left: 7px;
+}
+
+
+/* =========================================================
+   WHY SECTION
+   ========================================================= */
+
+.why-section {
+    background: var(--white);
+}
+
+
+.why-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 100px;
+    align-items: center;
+}
+
+
+.why-visual {
+    display: flex;
+    justify-content: center;
+}
+
+
+.gold-frame {
+    width: 370px;
+    height: 470px;
+    border: 1px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 18px;
+    position: relative;
+}
+
+
+.gold-frame::before {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    background: var(--black);
+    border-radius: calc(var(--radius) - 4px);
+}
+
+
+.frame-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.frame-small {
+    color: var(--gold-light);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 40px;
+}
+
+
+.frame-big {
+    font-family: "Playfair Display", serif;
+    font-size: 3.7rem;
+    color: white;
+}
+
+
+.gold-text {
+    color: var(--gold-light);
+}
+
+
+.frame-line {
+    height: 1px;
+    background: rgba(216,181,106,0.4);
+    margin: 12px 0;
+}
+
+
+.why-content h2 span {
+    display: block;
+    color: var(--gold);
+}
+
+
+.why-content > p {
+    max-width: 650px;
+    margin-top: 25px;
+}
+
+
+.feature-list {
+    margin-top: 40px;
+}
+
+
+.feature {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 20px;
+    padding: 22px 0;
+    border-top: 1px solid var(--border);
+}
+
+
+.feature-number {
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+
+.feature h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+
+.feature p {
+    font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   LEARNING THROUGH DOING
+   ========================================================= */
+
+.learning-process {
+    background: var(--cream);
+    padding: 64px 0;
+}
+
+
+.learning-process-intro {
+    max-width: 850px;
+    margin-top: 0;
+    margin-bottom: 34px;
+}
+
+
+.learning-process-intro p {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--gray);
+}
+
+
+/* =========================================================
+   LEARNING ROADMAP
+   ========================================================= */
+
+.learning-process-roadmap {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    padding-top: 5px;
+    margin-top: 0;
+}
+
+
+.roadmap-line {
+    position: absolute;
+    top: 31px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 1px;
+    background: var(--gold-pale);
+    z-index: 0;
+}
+
+
+.roadmap-step {
+    position: relative;
+    z-index: 2;
+    padding: 0 28px;
+    text-align: center;
+}
+
+
+.roadmap-step:not(:last-child) {
+    border-right: 1px solid rgba(23, 23, 23, 0.08);
+}
+
+
+.roadmap-marker {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+    transition:
+        background 0.35s ease,
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.roadmap-marker span {
+    color: var(--gold);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+
+.roadmap-content {
+    margin-top: 38px;
+}
+
+
+.roadmap-label {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 12px;
+}
+
+
+.roadmap-content h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.55rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+
+.roadmap-content p {
+    max-width: 245px;
+    margin: 0 auto;
+    font-size: 0.82rem;
+    line-height: 1.75;
+    color: var(--gray);
+}
+
+
+/* =========================================================
+   ROADMAP HOVER
+   ========================================================= */
+
+.roadmap-step:hover .roadmap-marker {
+    background: var(--black);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(23, 23, 23, 0.08);
+}
+
+
+.roadmap-step:hover .roadmap-marker span {
+    color: var(--gold-light);
+}
+
+
+.roadmap-step:hover .roadmap-content h3 {
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   LEARNING PROGRESSION NOTE
+   ========================================================= */
+
+.learning-process-note {
+    display: none;
+}
+
+
+/* =========================================================
+   AUDIENCE
+   ========================================================= */
+
+.audience-section {
+    background: var(--black);
+    color: white;
+    padding: 110px 0;
+}
+
+
+.audience-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 100px;
+}
+
+
+.audience-heading h2 {
+    max-width: 500px;
+}
+
+
+.audience-heading h2 span {
+    display: block;
+    color: var(--gold-light);
+}
+
+
+.audience-items {
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+
+.audience-item {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 20px;
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+
+.audience-item > span {
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+
+.audience-item h3 {
+    margin-bottom: 7px;
+}
+
+
+.audience-item p {
+    color: #aaa;
+    font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.cta-section {
+    position: relative;
+    overflow: hidden;
+    background: var(--gold);
+    padding: 48px 0;
+    text-align: center;
+}
+
+
+.cta-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    filter: blur(80px);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+.cta-section .small-label {
+    color: var(--black);
+    margin-bottom: 12px;
+}
+
+
+.cta-section h2 {
+    color: var(--black);
+    font-size: clamp(2.4rem, 4vw, 3.7rem);
+    line-height: 1.08;
+}
+
+
+.cta-section h2 span {
+    display: block;
+}
+
+
+.cta-section p {
+    color: rgba(23,23,23,0.7);
+    margin: 17px auto 0;
+    max-width: 520px;
+    line-height: 1.7;
+}
+
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+
+/* ================= CTA BUTTONS ================= */
+
+.btn-dark {
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
+}
+
+
+.btn-dark:hover {
+    background: var(--black-soft);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+
+.btn-light,
+.btn-outline-light {
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
+}
+
+
+.btn-light:hover,
+.btn-outline-light:hover {
+    background: var(--black-soft);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   COMPACT ABOUT CTA
+   ========================================================= */
+
+.about-final-cta {
+    padding: 58px 0;
+}
+
+
+.about-cta-content {
+    max-width: 720px;
+    margin: auto;
+}
+
+
+.about-cta-content .small-label {
+    margin-bottom: 10px;
+}
+
+
+.about-cta-content h2 {
+    font-size: clamp(2.15rem, 3.5vw, 3.15rem);
+    line-height: 1.08;
+    margin-bottom: 12px;
+}
+
+
+.about-cta-content p {
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+
+.about-cta-content .cta-buttons {
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   SHARED FOOTER
+   ========================================================= */
+
+.site-footer,
+.footer {
+    background: #111;
+    color: white;
+    padding: 70px 0 0;
+}
+
+
+.footer-main,
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr repeat(3, 1fr);
+    gap: 60px;
+    padding-bottom: 60px;
+}
+
+
+.footer-institute {
+    max-width: 300px;
+}
+
+
+.footer-label,
+.footer-column h4 {
+    display: block;
+    color: var(--gold-light);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 17px;
+}
+
+
+.footer-institute p {
+    color: #999;
+    max-width: 290px;
+    font-size: 0.82rem;
+    line-height: 1.75;
+}
+
+
+.footer-copyright {
+    display: block;
+    color: #666;
+    font-size: 0.65rem;
+    line-height: 1.6;
+    margin-top: 28px;
+}
+
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+
+.footer-column a {
+    color: #999;
+    font-size: 0.78rem;
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.footer-column a:hover {
+    color: white;
+}
+
+
+.footer-column h4 {
+    margin-bottom: 10px;
+}
+
+
+/* ================= SOCIAL ICONS ================= */
+
+.footer-connect {
+    align-items: flex-start;
+}
+
+
+.footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2px;
+}
+
+
+.footer-social {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(216,181,106,0.35);
+    border-radius: 50%;
+    color: var(--gold-light);
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.footer-social svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+.footer-social:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+    transform: translateY(-3px);
+}
+
+
+.footer-connect-text {
+    color: #777;
+    max-width: 220px;
+    font-size: 0.72rem;
+    line-height: 1.7;
+    margin-top: 18px;
+}
+
+
+/* ================= FOOTER BOTTOM ================= */
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 22px 0;
+    color: #666;
+    font-size: 0.65rem;
+}
+
+
+.footer-bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   PREMIUM EDITORIAL CARD SYSTEM
+   ========================================================= */
+
+.domain-card,
+.course-card,
+.learner-card,
+.value-item,
+.principle-item,
+.path-step,
+.learning-format-card {
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: var(--radius);
+    transition:
+        transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+        background 0.45s ease,
+        border-color 0.45s ease,
+        box-shadow 0.45s ease;
+}
+
+
+/* ================= SOFT GOLD GLOW ================= */
+
+.domain-card::before,
+.course-card::before,
+.learner-card::before,
+.value-item::before,
+.principle-item::before,
+.path-step::before,
+.learning-format-card::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(216, 181, 106, 0.20) 0%,
+            rgba(216, 181, 106, 0.08) 35%,
+            transparent 72%
+        );
+    top: -150px;
+    right: -150px;
+    opacity: 0;
+    transform: scale(0.65);
+    transition:
+        opacity 0.5s ease,
+        transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* ================= MOVING LIGHT ================= */
+
+.domain-card::after,
+.course-card::after,
+.learner-card::after,
+.value-item::after,
+.principle-item::after,
+.path-step::after,
+.learning-format-card::after {
+    content: "";
+    position: absolute;
+    top: -120%;
+    left: -80%;
+    width: 40%;
+    height: 320%;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.28),
+            transparent
+        );
+    transform: rotate(20deg) translateX(-150%);
+    opacity: 0;
+    transition:
+        transform 0.85s ease,
+        opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+/* ================= CONTENT ABOVE EFFECT ================= */
+
+.domain-card > *,
+.course-card > *,
+.learner-card > *,
+.value-item > *,
+.principle-item > *,
+.path-step > *,
+.learning-format-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ================= PREMIUM HOVER ================= */
+
+.domain-card:hover,
+.course-card:hover,
+.learner-card:hover,
+.value-item:hover,
+.principle-item:hover,
+.path-step:hover,
+.learning-format-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 18px 45px rgba(23,23,23,0.06);
+}
+
+
+/* ================= GOLD GLOW ON HOVER ================= */
+
+.domain-card:hover::before,
+.course-card:hover::before,
+.learner-card:hover::before,
+.value-item:hover::before,
+.principle-item:hover::before,
+.path-step:hover::before,
+.learning-format-card:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* ================= SHINE ON HOVER ================= */
+
+.domain-card:hover::after,
+.course-card:hover::after,
+.learner-card:hover::after,
+.value-item:hover::after,
+.principle-item:hover::after,
+.path-step:hover::after,
+.learning-format-card:hover::after {
+    opacity: 1;
+    transform:
+        rotate(20deg)
+        translateX(520%);
+}
+
+
+/* =========================================================
+   COURSES PAGE
+   ========================================================= */
+
+.page-hero {
+    background: var(--black);
+    color: var(--white);
+    padding: 110px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.page-hero::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(184, 134, 50, 0.12);
+    filter: blur(100px);
+    right: -200px;
+    top: -200px;
+}
+
+
+.page-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.35fr;
+    gap: 80px;
+    align-items: end;
+    position: relative;
+    z-index: 2;
+}
+
+
+.page-hero-content h1 {
+    max-width: 850px;
+}
+
+
+.page-hero-content h1 span {
+    display: block;
+    color: var(--gold-light);
+}
+
+
+.page-hero-content p {
+    max-width: 680px;
+    color: #aaa;
+    font-size: 1.05rem;
+    margin-top: 30px;
+}
+
+
+.page-hero-index {
+    border-left: 1px solid rgba(216,181,106,0.4);
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.page-hero-index > span {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gold-light);
+    font-weight: 700;
+}
+
+
+.page-hero-index strong {
+    font-family: "Playfair Display", serif;
+    font-size: 5rem;
+    font-weight: 500;
+    line-height: 1;
+    margin: 20px 0;
+}
+
+
+.index-line {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+    margin-bottom: 20px;
+}
+
+
+.page-hero-index small {
+    color: #888;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   COURSES HERO
+   ========================================================= */
+
+.courses-page-hero {
+    min-height: auto;
+    padding: 72px 0 78px;
+}
+
+
+.courses-page-hero .page-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    align-items: start;
+}
+
+
+.courses-page-hero .page-hero-content {
+    max-width: 1000px;
+}
+
+
+/* ================= COURSES HERO HEADING ================= */
+
+.courses-page-hero .page-hero-content h1 {
+    max-width: 950px;
+    margin: 0;
+    font-size: clamp(3.4rem, 6vw, 5.6rem);
+    line-height: 0.99;
+    letter-spacing: -0.045em;
+}
+
+
+.courses-page-hero .page-hero-content h1 span {
+    display: block;
+    white-space: nowrap;
+    color: var(--gold-light);
+}
+
+
+.courses-page-hero .page-hero-content p {
+    max-width: 680px;
+    margin-top: 22px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   ABOUT HERO
+   MATCHES COURSES HERO EXACTLY
+   ========================================================= */
+
+.about-page-hero {
+    min-height: auto;
+    padding: 72px 0 78px;
+}
+
+
+.about-page-hero .page-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    align-items: start;
+}
+
+
+.about-page-hero .page-hero-content {
+    max-width: 1000px;
+}
+
+
+/* ================= ABOUT HERO HEADING ================= */
+
+.about-page-hero .page-hero-content h1,
+.about-page-hero .about-hero-title {
+    max-width: 950px;
+    margin: 0;
+    font-size: clamp(3.4rem, 6vw, 5.6rem);
+    line-height: 0.99;
+    letter-spacing: -0.045em;
+}
+
+
+/* ================= TWO HERO LINES ================= */
+
+.about-page-hero .about-hero-line {
+    display: block;
+}
+
+
+/* ================= FIRST LINE: WHITE ================= */
+
+.about-page-hero .about-hero-title .about-hero-line:first-child {
+    color: var(--white);
+}
+
+
+/* ================= SECOND LINE: GOLD ================= */
+
+.about-page-hero .about-hero-title .about-hero-line:last-child {
+    color: var(--gold-light);
+}
+
+
+.about-page-hero .page-hero-content p {
+    max-width: 680px;
+    margin-top: 22px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   COURSE INTRO
+   ========================================================= */
+
+.course-intro {
+    background: var(--white);
+}
+
+
+.course-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+
+.course-intro-heading {
+    position: relative;
+}
+
+
+.course-intro h2 {
+    max-width: 600px;
+    font-size: clamp(2.35rem, 4vw, 3.75rem);
+    line-height: 1.08;
+}
+
+
+.course-intro h2 span {
+    display: block;
+    color: var(--gold);
+}
+
+
+/* ================= COURSE INTRO ACCENT ================= */
+
+.course-intro-accent {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 32px;
+    width: 335px;
+}
+
+
+.course-intro-accent-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            rgba(255,255,255,0.9),
+            rgba(216,181,106,0.65) 35%,
+            var(--gold-light) 70%
+        );
+    box-shadow:
+        0 0 0 7px rgba(216,181,106,0.10);
+    flex-shrink: 0;
+}
+
+
+.course-intro-accent-line {
+    width: 275px;
+    height: 1px;
+    background:
+        linear-gradient(
+            to right,
+            var(--gold-pale),
+            rgba(232,211,165,0.25)
+        );
+}
+
+
+.course-intro-text {
+    border-left: 1px solid var(--gold-pale);
+    padding-left: 35px;
+}
+
+
+.course-intro-text p + p {
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   COURSE CATALOG
+   ========================================================= */
+
+.course-catalog {
+    background: var(--black);
+    color: var(--white);
+}
+
+
+.catalog-header {
+    margin-bottom: 35px;
+}
+
+
+.catalog-header .small-label {
+    color: var(--gold-light);
+    margin-bottom: 12px;
+}
+
+
+.catalog-header h2 {
+    max-width: none;
+    color: var(--white);
+    font-size: clamp(2.2rem, 3.8vw, 3.5rem);
+    line-height: 1.05;
+    white-space: nowrap;
+}
+
+
+.catalog-header h2 span {
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   COURSE FILTERS
+   ========================================================= */
+
+.course-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 45px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 25px;
+}
+
+
+.filter-btn {
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.05);
+    color: #c8c4bc;
+    padding: 11px 18px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.filter-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+    transform: translateY(-1px);
+}
+
+
+.filter-btn.active {
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+}
+
+
+/* =========================================================
+   COURSE GRID
+   ========================================================= */
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+
+    /*
+     * IMPORTANT:
+     * Every row must have the same height.
+     * The tallest card determines the row height,
+     * and all cards stretch to fill that row.
+     */
+    align-items: stretch;
+    grid-auto-rows: 1fr;
+}
+
+
+/* =========================================================
+   COURSE CARDS
+   ========================================================= */
+
+.course-card {
+    /*
+     * The grid controls the height.
+     * Do not allow individual cards to become
+     * different heights based on their content.
+     */
+    height: 100%;
+    min-height: 0;
+
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 34px;
+    position: relative;
+    border-radius: var(--radius);
+    color: var(--black);
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.course-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(184,134,50,0.5);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.07);
+}
+
+
+/* =========================================================
+   COURSE PLAN BACKGROUNDS
+   ========================================================= */
+
+.course-plan-01 {
+    background: #FFFFFF;
+}
+
+
+.course-plan-02 {
+    background: #FCFAF5;
+}
+
+
+.course-plan-03 {
+    background: #F9F6EE;
+}
+
+
+.course-plan-04 {
+    background: #FDFBF7;
+}
+
+
+/* =========================================================
+   COURSE CARD TOP
+   ========================================================= */
+
+.course-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+
+.course-number {
+    color: #AAA;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+
+.course-category {
+    color: var(--gold);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-align: right;
+}
+
+
+/* =========================================================
+   COURSE SYMBOL
+   ========================================================= */
+
+.course-symbol {
+    width: 68px;
+    height: 68px;
+    border: 1px solid var(--gold);
+    border-radius: var(--radius-small);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-top: 42px;
+    margin-bottom: 27px;
+    background: rgba(255,255,255,0.55);
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+
+.course-symbol img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: calc(var(--radius-small) - 2px);
+}
+
+
+/* =========================================================
+   COURSE TITLES
+   ========================================================= */
+
+.course-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: var(--black);
+    flex-shrink: 0;
+}
+
+
+.course-card > p {
+    font-size: 0.86rem;
+    line-height: 1.75;
+    max-width: 500px;
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   COURSE MODULES
+   ========================================================= */
+
+.course-modules {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+
+    /*
+     * Keeps the module section inside the card
+     * without affecting the equal card height.
+     */
+    flex: 1;
+    min-height: 0;
+}
+
+
+.module-label {
+    display: block;
+    color: var(--gold);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    margin-bottom: 13px;
+}
+
+
+.course-modules ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 25px;
+    row-gap: 0;
+}
+
+
+.course-modules li {
+    position: relative;
+    padding: 7px 0 7px 15px;
+    color: var(--gray);
+    font-size: 0.73rem;
+    line-height: 1.5;
+}
+
+
+.course-modules li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold-pale);
+}
+
+
+/* =========================================================
+   COURSE META
+   Removed from active course cards.
+   Kept here only for backward compatibility with
+   any other page/component that may still use it.
+   ========================================================= */
+
+.course-meta {
+    position: absolute;
+    bottom: 80px;
+    left: 34px;
+    font-size: 0.65rem;
+    color: var(--gray-light);
+    letter-spacing: 0.04em;
+}
+
+
+.course-meta::before {
+    content: "LEVEL  ";
+    color: var(--gold);
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+
+/* =========================================================
+   COURSE LINK
+   Removed from active course cards.
+   Kept here only for backward compatibility.
+   ========================================================= */
+
+.course-link {
+    position: absolute;
+    left: 34px;
+    bottom: 32px;
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 700;
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.course-link span {
+    margin-left: 8px;
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+
+.course-link:hover {
+    color: var(--black);
+}
+
+
+.course-link:hover span {
+    transform: translate(3px, -3px);
+}
+
+
+/* =========================================================
+   OBSOLETE DARK COURSE CARD
+   ========================================================= */
+
+.course-card-dark {
+    background: var(--white);
+    color: var(--black);
+    border-color: var(--border);
+}
+
+
+.course-card-dark p {
+    color: var(--gray);
+}
+
+
+.course-card-dark .course-number {
+    color: #AAA;
+}
+
+
+.course-card-dark:hover {
+    border-color: rgba(184,134,50,0.5);
+}
+
+
+/* =========================================================
+   HIDDEN FILTERED COURSE
+   ========================================================= */
+
+.course-card.hidden {
+    display: none;
+}
+
+
+/* =========================================================
+   LEARNING PATH
+   ========================================================= */
+
+.path-section {
+    background: var(--white);
+}
+
+
+.path-header {
+    max-width: 750px;
+}
+
+
+.path-header h2 {
+    font-size: clamp(2.35rem, 4vw, 3.75rem);
+    line-height: 1.08;
+}
+
+
+.path-header h2 span {
+    display: block;
+    color: var(--gold);
+}
+
+
+.path-header p {
+    max-width: 600px;
+    margin-top: 25px;
+}
+
+
+.path-grid {
+    display: grid;
+    grid-template-columns:
+        1fr
+        auto
+        1fr
+        auto
+        1fr
+        auto
+        1fr;
+    align-items: center;
+    margin-top: 70px;
+}
+
+
+.path-step {
+    min-height: 300px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 30px;
+    position: relative;
+    border-radius: var(--radius);
+    transition: 0.3s;
+}
+
+
+.path-step:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+
+.path-step > span {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+
+.path-icon {
+    width: 55px;
+    height: 55px;
+    border: 1px solid var(--gold);
+    border-radius: var(--radius-small);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.58rem;
+    font-weight: 700;
+    background: var(--white);
+}
+
+
+.path-step h3 {
+    margin-top: 50px;
+    margin-bottom: 12px;
+    font-family: "Playfair Display", serif;
+    font-size: 1.25rem;
+}
+
+
+.path-step p {
+    font-size: 0.8rem;
+}
+
+
+.path-connector {
+    width: 35px;
+    height: 1px;
+    background: var(--gold-pale);
+}
+
+
+/* =========================================================
+   COMPACT COURSES FINAL CTA
+   ========================================================= */
+
+.courses-final-cta {
+    padding: 58px 0;
+}
+
+
+.courses-final-cta .small-label {
+    margin-bottom: 10px;
+}
+
+
+.courses-final-cta h2 {
+    font-size: clamp(2.15rem, 3.5vw, 3.15rem);
+    line-height: 1.06;
+}
+
+
+.courses-final-cta p {
+    max-width: 500px;
+    margin: 12px auto 0;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+
+.courses-final-cta .cta-buttons {
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   COURSE NOTE
+   ========================================================= */
+
+.course-note {
+    background: var(--cream-dark);
+    padding: 90px 0;
+}
+
+
+.course-note-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+}
+
+
+.course-note h2 span {
+    display: block;
+    color: var(--gold);
+}
+
+
+.course-note-grid > div:last-child {
+    border-left: 1px solid var(--gold-pale);
+    padding-left: 35px;
+}
+
+
+.course-note-grid p {
+    max-width: 550px;
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   ABOUT AI MATRIX INSTITUTE
+   ========================================================= */
+
+
+/* =========================================================
+   ABOUT STORY / OUR WHY
+   ========================================================= */
+
+.about-story {
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+
+.about-story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 75px;
+    align-items: start;
+    position: relative;
+    z-index: 3;
+}
+
+
+/* ================= OUR WHY HEADING ================= */
+
+.about-story-heading {
+    padding-top: 0;
+    position: relative;
+    z-index: 3;
+}
+
+
+/* ================= ABOUT STORY TITLE ================= */
+
+.about-story-title {
+    max-width: 560px;
+    font-size: clamp(2.1rem, 3.2vw, 3.15rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    margin: 0;
+}
+
+
+.about-story-title span {
+    display: block;
+    color: var(--gold);
+}
+
+
+/* ================= HEADING ACCENT ================= */
+
+.about-story-accent {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 32px;
+    width: 335px;
+}
+
+
+.about-story-accent-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            rgba(255,255,255,0.9),
+            rgba(216,181,106,0.65) 35%,
+            var(--gold-light) 70%
+        );
+    box-shadow:
+        0 0 0 7px rgba(216,181,106,0.10);
+    flex-shrink: 0;
+}
+
+
+.about-story-accent-line {
+    width: 275px;
+    height: 1px;
+    background:
+        linear-gradient(
+            to right,
+            var(--gold-pale),
+            rgba(232,211,165,0.25)
+        );
+}
+
+
+/* ================= STORY CONTENT ================= */
+
+.about-story-content {
+    border-left: 1px solid var(--gold-pale);
+    padding-left: 35px;
+    position: relative;
+    z-index: 3;
+}
+
+
+.about-story-content p {
+    max-width: 650px;
+    line-height: 1.75;
+}
+
+
+.about-story-content p + p {
+    margin-top: 22px;
+}
+
+
+/* =========================================================
+   OUR WHY DECORATIVE ORBITS
+   ========================================================= */
+
+.about-story-decoration {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+.about-story-orbit-left {
+    width: 560px;
+    height: 560px;
+    border: 1px solid rgba(184,134,50,0.20);
+    border-radius: 50%;
+    left: -390px;
+    top: 20px;
+    transform: rotate(-18deg);
+}
+
+
+.about-story-orbit-left::before {
+    content: "";
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    border: 1px solid rgba(216,181,106,0.18);
+    border-radius: 50%;
+    left: 80px;
+    top: 65px;
+}
+
+
+.about-story-orbit-left::after {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(216,181,106,0.18),
+            rgba(216,181,106,0.06) 45%,
+            transparent 72%
+        );
+    filter: blur(25px);
+    left: 180px;
+    top: 155px;
+}
+
+
+.about-story-orbit-left span {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--gold-light);
+    left: 490px;
+    top: 355px;
+    box-shadow:
+        0 0 0 6px rgba(216,181,106,0.10);
+}
+
+
+.about-story-orbit-right {
+    width: 430px;
+    height: 430px;
+    border: 1px solid rgba(184,134,50,0.16);
+    border-radius: 50%;
+    right: -350px;
+    bottom: -250px;
+    transform: rotate(20deg);
+}
+
+
+.about-story-orbit-right::before {
+    content: "";
+    position: absolute;
+    width: 330px;
+    height: 330px;
+    border: 1px solid rgba(216,181,106,0.16);
+    border-radius: 50%;
+    right: 50px;
+    bottom: 45px;
+}
+
+
+.about-story-orbit-right::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--gold-light);
+    left: 60px;
+    top: 75px;
+    box-shadow:
+        0 0 0 6px rgba(216,181,106,0.10);
+}
+
+
+/* =========================================================
+   WHY AI MATRIX INSTITUTE
+   ========================================================= */
+
+.about-name {
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+}
+
+
+.about-name-intro {
+    max-width: 760px;
+    margin-bottom: 55px;
+    position: relative;
+    z-index: 2;
+}
+
+
+.about-name-intro h2 {
+    max-width: 760px;
+    font-size: clamp(2.35rem, 4vw, 3.75rem);
+    line-height: 1.08;
+}
+
+
+.about-name-intro h2 span {
+    display: block;
+    color: var(--gold);
+    white-space: nowrap;
+}
+
+
+.about-name-intro p {
+    max-width: 650px;
+    margin-top: 22px;
+    line-height: 1.75;
+}
+
+
+/* ================= AI MATRIX CONCEPT ================= */
+
+.ai-matrix-concept {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    align-items: stretch;
+    gap: 0;
+    position: relative;
+    z-index: 2;
+}
+
+
+.ai-matrix-block {
+    min-height: 235px;
+    padding: 36px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+}
+
+
+.ai-matrix-block::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,134,50,0.12);
+    right: -110px;
+    bottom: -110px;
+}
+
+
+.ai-matrix-ai {
+    border-color: rgba(184,134,50,0.35);
+}
+
+
+.ai-matrix-foundation {
+    background: var(--black);
+    border-color: var(--black);
+}
+
+
+.ai-matrix-label {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 1;
+    color: var(--black);
+    position: relative;
+    z-index: 2;
+}
+
+
+.ai-matrix-foundation .ai-matrix-label {
+    color: var(--gold-light);
+}
+
+
+.ai-matrix-description {
+    position: relative;
+    z-index: 2;
+    margin-top: 38px;
+    max-width: 430px;
+}
+
+
+.ai-matrix-description > span {
+    display: block;
+    color: var(--gold);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 10px;
+}
+
+
+.ai-matrix-description p {
+    font-size: 0.84rem;
+    line-height: 1.7;
+}
+
+
+.ai-matrix-foundation .ai-matrix-description p {
+    color: #999;
+}
+
+
+/* ================= AI + MATRIX CONNECTOR ================= */
+
+.ai-matrix-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+.ai-matrix-connector::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gold-pale);
+}
+
+
+.ai-matrix-connector span {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    background: var(--cream);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Playfair Display", serif;
+    font-size: 1.4rem;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   ABOUT PRACTICE
+   ========================================================= */
+
+.about-practice {
+    background: var(--white);
+}
+
+
+.about-practice-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 85px;
+    align-items: start;
+}
+
+
+.about-practice-heading {
+    position: relative;
+}
+
+
+.about-practice-heading h2 {
+    max-width: 600px;
+    font-size: clamp(2.3rem, 3.8vw, 3.55rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+}
+
+
+.about-practice-heading h2 span {
+    display: block;
+    color: var(--gold);
+}
+
+
+.about-practice-content {
+    border-left: 1px solid var(--gold-pale);
+    padding-left: 35px;
+}
+
+
+.about-practice-content p {
+    max-width: 650px;
+    line-height: 1.8;
+}
+
+
+.about-practice-content p + p {
+    margin-top: 22px;
+}
+
+
+.about-practice-content strong {
+    color: var(--black);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   HOW WE TEACH
+   ========================================================= */
+
+.about-learning {
+    background: var(--cream);
+}
+
+
+.about-learning-header {
+    max-width: 760px;
+    margin-bottom: 55px;
+}
+
+
+.about-learning-header h2 {
+    max-width: 760px;
+    font-size: clamp(2.3rem, 3.8vw, 3.55rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+}
+
+
+.about-learning-header h2 span {
+    display: block;
+    color: var(--gold);
+}
+
+
+.about-learning-header p {
+    max-width: 650px;
+    margin-top: 22px;
+    line-height: 1.75;
+}
+
+
+.learning-format-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+
+.learning-format-card {
+    min-height: 330px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    border-radius: var(--radius);
+}
+
+
+.learning-format-number {
+    position: absolute;
+    top: 27px;
+    right: 28px;
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+
+.learning-format-label {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-top: 5px;
+}
+
+
+.learning-format-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.65rem;
+    margin-top: 55px;
+    margin-bottom: 15px;
+}
+
+
+.learning-format-card p {
+    max-width: 380px;
+    font-size: 0.83rem;
+    line-height: 1.8;
+    color: var(--gray);
+}
+
+
+.learning-format-card::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 1px solid rgba(184,134,50,0.11);
+    border-radius: 50%;
+    right: -85px;
+    bottom: -85px;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ABOUT VISION
+   ========================================================= */
+
+.about-vision {
+    background: var(--black);
+    color: white;
+    padding: 120px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.about-vision::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border: 1px solid rgba(184,134,50,0.18);
+    border-radius: 50%;
+    left: -300px;
+    top: -200px;
+}
+
+
+.about-vision::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: rgba(184,134,50,0.1);
+    filter: blur(100px);
+    right: -150px;
+    bottom: -150px;
+}
+
+
+.vision-grid {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: 100px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+
+.vision-number {
+    font-family: "Playfair Display", serif;
+    color: var(--gold-light);
+    font-size: clamp(5rem, 12vw, 10rem);
+    line-height: 1;
+    opacity: 0.8;
+}
+
+
+.vision-content h2 span {
+    display: block;
+    color: var(--gold-light);
+}
+
+
+.vision-content > p {
+    max-width: 680px;
+    color: #aaa;
+    margin-top: 25px;
+    line-height: 1.8;
+}
+
+
+.vision-content .btn {
+    margin-top: 30px;
+}
+
+
+/* =========================================================
+   CONTACT PAGE
+   MATCHES COURSES HERO EXACTLY
+   ========================================================= */
+
+.contact-page-hero {
+    min-height: auto;
+    padding: 72px 0 78px;
+}
+
+
+.contact-page-hero .page-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    align-items: start;
+}
+
+
+.contact-page-hero .page-hero-content {
+    max-width: 1000px;
+}
+
+
+/* ================= CONTACT HERO HEADING ================= */
+
+.contact-page-hero .page-hero-content h1 {
+    max-width: 950px;
+    margin: 0;
+    font-size: clamp(3.4rem, 6vw, 5.6rem);
+    line-height: 0.99;
+    letter-spacing: -0.045em;
+}
+
+
+.contact-page-hero .page-hero-content h1 span {
+    display: block;
+    color: var(--gold-light);
+}
+
+
+.contact-page-hero .page-hero-content p {
+    max-width: 680px;
+    margin-top: 22px;
+    line-height: 1.7;
+}
+
+
+/* ================= CONTACT MAIN ================= */
+
+.contact-main {
+    background: var(--white);
+}
+
+
+.contact-main-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 100px;
+    align-items: start;
+}
+
+
+.contact-details h2 span {
+    display: block;
+    color: var(--gold);
+}
+
+
+.contact-description {
+    max-width: 500px;
+    margin-top: 25px;
+    line-height: 1.8;
+    color: var(--gray);
+}
+
+
+.contact-detail {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-top: 38px;
+}
+
+
+.contact-detail-icon {
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--gold);
+    border-radius: var(--radius-small);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    flex-shrink: 0;
+    font-family: "Playfair Display", serif;
+}
+
+
+.contact-detail > div:last-child > span {
+    display: block;
+    color: var(--gold);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+}
+
+
+.contact-detail a {
+    color: var(--black);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+
+.contact-detail a:hover {
+    color: var(--gold);
+}
+
+
+.contact-detail p {
+    margin: 0;
+    line-height: 1.7;
+    font-size: 0.88rem;
+}
+
+
+/* ================= CONTACT FORM ================= */
+
+.contact-form-wrapper {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+}
+
+
+.form-header {
+    margin-bottom: 35px;
+}
+
+
+.form-header h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.8rem;
+    margin-top: 12px;
+}
+
+
+.form-group {
+    margin-bottom: 23px;
+}
+
+
+.form-group label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-bottom: 9px;
+    letter-spacing: 0.04em;
+}
+
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #d8d1c4;
+    border-radius: var(--radius-small);
+    background: var(--white);
+    padding: 15px 16px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.85rem;
+    color: var(--black);
+    outline: none;
+    transition: 0.3s;
+}
+
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--gold);
+    box-shadow:
+        0 0 0 3px rgba(184,134,50,0.08);
+}
+
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #aaa;
+}
+
+
+.form-submit {
+    border: none;
+    cursor: pointer;
+}
+
+
+.form-note {
+    font-size: 0.7rem;
+    color: var(--gray-light);
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   ENQUIRY MODAL
+   ========================================================= */
+
+.enquiry-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+
+.enquiry-modal.open {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* ================= MODAL OVERLAY ================= */
+
+.enquiry-modal-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(17, 17, 17, 0.72);
+
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+
+/* ================= MODAL DIALOG ================= */
+
+.enquiry-modal-dialog {
+    position: relative;
+    z-index: 2;
+
+    width: min(100%, 650px);
+    max-height: min(90vh, 760px);
+
+    overflow-y: auto;
+
+    background: var(--cream);
+
+    border: 1px solid rgba(216,181,106,0.35);
+    border-radius: var(--radius);
+
+    padding: 38px;
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,0.24);
+
+    transform: translateY(15px) scale(0.98);
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.enquiry-modal.open .enquiry-modal-dialog {
+    transform: translateY(0) scale(1);
+}
+
+
+/* ================= MODAL SCROLLBAR ================= */
+
+/*
+ * Hide the scrollbar visually while keeping
+ * the enquiry form fully scrollable.
+ */
+
+.enquiry-modal-dialog {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+
+.enquiry-modal-dialog::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* ================= MODAL CLOSE BUTTON ================= */
+
+.enquiry-modal-close {
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    background: var(--white);
+    color: var(--black);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.enquiry-modal-close:hover {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+    transform: rotate(90deg);
+}
+
+
+.enquiry-modal-close span {
+    position: absolute;
+    width: 14px;
+    height: 1.5px;
+    background: currentColor;
+    border-radius: 2px;
+}
+
+
+.enquiry-modal-close span:first-child {
+    transform: rotate(45deg);
+}
+
+
+.enquiry-modal-close span:last-child {
+    transform: rotate(-45deg);
+}
+
+
+/* ================= MODAL HEADER ================= */
+
+.enquiry-modal-header {
+    padding-right: 50px;
+    margin-bottom: 28px;
+}
+
+
+.enquiry-modal-header .section-label {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 10px;
+}
+
+
+.enquiry-modal-header .small-label {
+    margin-bottom: 10px;
+}
+
+
+.enquiry-modal-header h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.06;
+}
+
+
+.enquiry-modal-header h2 span {
+    display: block;
+    color: var(--gold);
+}
+
+
+.enquiry-modal-header p {
+    margin-top: 10px;
+    font-size: 0.86rem;
+    line-height: 1.65;
+    max-width: 500px;
+}
+
+
+/* ================= MODAL FORM ================= */
+
+.enquiry-modal-form {
+    width: 100%;
+}
+
+
+.enquiry-modal .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+
+.enquiry-modal .form-group {
+    margin-bottom: 18px;
+}
+
+
+.enquiry-modal .form-group input,
+.enquiry-modal .form-group select,
+.enquiry-modal .form-group textarea {
+    background: var(--white);
+}
+
+
+.enquiry-modal .form-group textarea {
+    min-height: 120px;
+}
+
+
+.enquiry-modal .form-submit {
+    margin-top: 2px;
+}
+
+
+/* ================= MODAL SUBMIT BUTTON ================= */
+
+.enquiry-modal-submit {
+    width: 100%;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    border: 1px solid var(--black);
+    border-radius: var(--radius-small);
+
+    background: var(--black);
+    color: var(--white);
+
+    padding: 15px 20px;
+
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.enquiry-modal-submit span {
+    font-size: 1rem;
+    line-height: 1;
+    transition: transform 0.25s ease;
+}
+
+
+.enquiry-modal-submit:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+    transform: translateY(-2px);
+}
+
+
+.enquiry-modal-submit:hover span {
+    transform: translateX(3px);
+}
+
+
+.enquiry-modal-submit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* ================= MODAL STATUS ================= */
+
+.enquiry-modal-status {
+    min-height: 20px;
+    margin-top: 12px;
+
+    font-size: 0.72rem;
+    line-height: 1.5;
+
+    text-align: center;
+
+    color: var(--gray);
+}
+
+
+.enquiry-modal-status.success {
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   RESPONSIVE SYSTEM
+   ========================================================= */
+
+
+/* =========================================================
+   1100px AND BELOW
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .desktop-nav {
+        gap: 17px;
+    }
+
+
+    .desktop-nav a {
+        font-size: 0.78rem;
+    }
+
+
+    .nav-container {
+        gap: 20px;
+    }
+
+
+    .hero-container {
+        gap: 30px;
+    }
+
+
+    /* ================= HERO MATRIX ================= */
+
+    .hero-matrix-visual {
+        min-height: 470px;
+    }
+
+
+    .matrix-orbit-one {
+        width: 390px;
+        height: 390px;
+    }
+
+
+    .matrix-orbit-two {
+        width: 310px;
+        height: 310px;
+    }
+
+
+    .matrix-orbit-three {
+        width: 500px;
+        height: 190px;
+    }
+
+
+    .matrix-domain-programming {
+        left: 5%;
+    }
+
+
+    .matrix-domain-data {
+        left: 0;
+    }
+
+
+    .matrix-domain-ml {
+        left: 7%;
+    }
+
+
+    .matrix-domain-genai {
+        right: 0;
+    }
+
+
+    .matrix-domain-automation {
+        right: 7%;
+    }
+
+
+    .domain-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .learning-process-roadmap {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 60px;
+    }
+
+
+    .roadmap-line {
+        display: none;
+    }
+
+
+    .roadmap-step {
+        padding: 0 30px;
+        border-right: none !important;
+    }
+
+
+    /*
+     * Course cards remain equal height at tablet/desktop sizes.
+     */
+    .courses-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+        grid-auto-rows: 1fr;
+    }
+
+
+    .course-card {
+        height: 100%;
+        min-height: 670px;
+    }
+
+
+    .course-modules ul {
+        grid-template-columns: 1fr;
+    }
+
+
+    .path-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+
+    .path-connector {
+        display: none;
+    }
+
+
+    .about-story-grid,
+    .about-practice-grid {
+        gap: 65px;
+    }
+
+
+    .about-name-intro h2 {
+        font-size: clamp(2.2rem, 4vw, 3.35rem);
+    }
+
+
+    .about-name-intro h2 span {
+        white-space: normal;
+    }
+
+
+    .ai-matrix-concept {
+        grid-template-columns: 1fr 70px 1fr;
+    }
+
+
+    .learning-format-grid {
+        gap: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   1050px AND BELOW
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+    .about-story-grid,
+    .about-practice-grid {
+        gap: 55px;
+    }
+
+
+    .about-story-title {
+        font-size: clamp(2.1rem, 3.5vw, 3rem);
+    }
+
+
+    .about-page-hero .page-hero-content h1,
+    .about-page-hero .about-hero-title {
+        font-size: clamp(3.2rem, 6vw, 5rem);
+    }
+
+
+    .contact-page-hero .page-hero-content h1 {
+        font-size: clamp(3.2rem, 6vw, 5rem);
+    }
+
+
+    .courses-page-hero .page-hero-content h1 {
+        font-size: clamp(3.2rem, 6vw, 5rem);
+    }
+
+}
+
+
+/* =========================================================
+   1000px AND BELOW
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .contact-main-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+
+    .about-practice-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+
+    .learning-format-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .learning-format-card {
+        min-height: 300px;
+    }
+
+
+    .course-intro-grid {
+        gap: 55px;
+    }
+
+}
+
+
+/* =========================================================
+   900px AND BELOW
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .desktop-nav,
+    .nav-enroll {
+        display: none;
+    }
+
+
+    .menu-toggle,
+    .mobile-menu-toggle {
+        display: block;
+        margin-left: auto;
+    }
+
+
+    .mobile-nav {
+        padding: 20px 6% 30px;
+        border-top: 1px solid var(--border);
+    }
+
+
+    .mobile-nav.open {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+
+    .mobile-nav a {
+        padding: 13px 0;
+        border-bottom: 1px solid var(--border);
+        font-weight: 600;
+    }
+
+
+    .mobile-nav a.active {
+        color: var(--gold);
+    }
+
+
+    /* ================= MOBILE ENQUIRE BUTTON ================= */
+
+    .mobile-enquire-btn {
+        width: 100%;
+        margin-top: 12px;
+        border: none;
+        background: var(--black);
+        color: var(--white);
+        text-align: center;
+        padding: 15px !important;
+        border-radius: var(--radius-small);
+        font-family: inherit;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+
+    .mobile-enquire-btn:hover {
+        background: var(--gold);
+        color: var(--black);
+    }
+
+
+    /* ================= HOMEPAGE HERO ================= */
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        padding: 80px 0;
+    }
+
+
+    .hero-visual {
+        min-height: 420px;
+    }
+
+
+    .hero-matrix-visual {
+        min-height: 470px;
+        max-width: 650px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+
+    .intro-grid,
+    .why-grid,
+    .audience-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+
+    .why-visual {
+        order: 2;
+    }
+
+
+    .why-content {
+        order: 1;
+    }
+
+
+    .footer-main,
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .footer-institute {
+        grid-column: 1 / -1;
+        max-width: 420px;
+    }
+
+
+    .page-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+
+    .page-hero-index {
+        max-width: 300px;
+    }
+
+
+    /* ================= COURSES HERO ================= */
+
+    .courses-page-hero {
+        padding: 65px 0 70px;
+    }
+
+
+    .courses-page-hero .page-hero-grid {
+        gap: 0;
+    }
+
+
+    .courses-page-hero .page-hero-content h1 {
+        max-width: 900px;
+        font-size: clamp(3rem, 6.5vw, 4.8rem);
+    }
+
+
+    /* ================= ABOUT HERO ================= */
+
+    .about-page-hero {
+        padding: 65px 0 70px;
+    }
+
+
+    .about-page-hero .page-hero-grid {
+        gap: 0;
+    }
+
+
+    .about-page-hero .page-hero-content h1,
+    .about-page-hero .about-hero-title {
+        max-width: 900px;
+        font-size: clamp(3rem, 6.5vw, 4.8rem);
+        line-height: 0.99;
+    }
+
+
+    .about-page-hero .page-hero-content p {
+        max-width: 680px;
+        margin-top: 22px;
+        line-height: 1.7;
+    }
+
+
+    /* ================= CONTACT HERO ================= */
+
+    .contact-page-hero {
+        padding: 65px 0 70px;
+    }
+
+
+    .contact-page-hero .page-hero-grid {
+        gap: 0;
+    }
+
+
+    .contact-page-hero .page-hero-content h1 {
+        max-width: 900px;
+        font-size: clamp(3rem, 6.5vw, 4.8rem);
+        line-height: 0.99;
+    }
+
+
+    .contact-page-hero .page-hero-content p {
+        max-width: 680px;
+        margin-top: 22px;
+        line-height: 1.7;
+    }
+
+
+    .course-intro-grid,
+    .course-note-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+
+    .course-intro-accent {
+        margin-top: 28px;
+    }
+
+
+    /*
+     * On smaller screens the cards become one column,
+     * so each card receives the same fixed minimum height.
+     */
+    .courses-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+
+
+    .course-card {
+        height: auto;
+        min-height: 610px;
+    }
+
+
+    .course-modules ul {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .path-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .about-story-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+
+    .about-story-title {
+        max-width: 700px;
+        font-size: clamp(2.3rem, 5vw, 3.5rem);
+    }
+
+
+    .about-story-content {
+        max-width: 700px;
+    }
+
+
+    .about-story-orbit-left {
+        left: -460px;
+    }
+
+
+    .about-story-orbit-right {
+        right: -380px;
+    }
+
+
+    .about-name-intro {
+        max-width: 720px;
+    }
+
+
+    .about-name-intro h2 {
+        max-width: 720px;
+    }
+
+
+    .ai-matrix-concept {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+
+    .ai-matrix-connector {
+        min-height: 70px;
+    }
+
+
+    .ai-matrix-connector::before {
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        right: auto;
+        width: 1px;
+        height: auto;
+    }
+
+
+    .about-practice-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+
+    /* ================= ENQUIRY MODAL ================= */
+
+    .enquiry-modal {
+        padding: 18px;
+    }
+
+
+    .enquiry-modal-dialog {
+        max-height: 92vh;
+    }
+
+}
+
+
+/* =========================================================
+   600px AND BELOW
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* ================= GLOBAL ================= */
+
+    .section {
+        padding: 75px 0;
+    }
+
+
+    body {
+        padding-top: 75px;
+    }
+
+
+    html {
+        scroll-padding-top: 85px;
+    }
+
+
+    /* ================= NAVBAR ================= */
+
+    .nav-container {
+        min-height: 75px;
+    }
+
+
+    .brand {
+        gap: 10px;
+    }
+
+
+    .brand img,
+    .brand-logo {
+        width: 45px;
+        height: 45px;
+    }
+
+
+    .brand-name {
+        font-size: 0.95rem;
+    }
+
+
+    .brand-subtitle {
+        font-size: 0.48rem;
+        letter-spacing: 0.42em;
+    }
+
+
+    /* ================= HOMEPAGE HERO ================= */
+
+    .hero {
+        min-height: auto;
+    }
+
+
+    .hero-container {
+        padding: 65px 0 70px;
+    }
+
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+
+    h2 {
+        font-size: 2.7rem;
+    }
+
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+    .btn {
+        width: 100%;
+    }
+
+
+    /* =====================================================
+       HERO MATRIX VISUAL
+       ===================================================== */
+
+    .hero-matrix-visual {
+        min-height: 390px;
+        margin-top: 5px;
+    }
+
+
+    .matrix-visual-header {
+        top: 10px;
+        left: 8px;
+        right: 8px;
+    }
+
+
+    .matrix-visual-header span:first-child {
+        font-size: 0.58rem;
+    }
+
+
+    .matrix-visual-header span:last-child {
+        font-size: 0.46rem;
+        letter-spacing: 0.1em;
+    }
+
+
+    .matrix-orbit-one {
+        width: 300px;
+        height: 300px;
+    }
+
+
+    .matrix-orbit-two {
+        width: 235px;
+        height: 235px;
+    }
+
+
+    .matrix-orbit-three {
+        width: 390px;
+        height: 145px;
+    }
+
+
+    .matrix-domain {
+        min-width: 92px;
+        max-width: 105px;
+        padding: 9px 10px;
+        border-radius: 9px;
+    }
+
+
+    .matrix-domain-number {
+        font-size: 0.44rem;
+        margin-bottom: 4px;
+    }
+
+
+    .matrix-domain-name {
+        font-size: 0.48rem;
+        letter-spacing: 0.05em;
+    }
+
+
+    .matrix-domain-programming {
+        top: 19%;
+        left: 0;
+    }
+
+
+    .matrix-domain-data {
+        top: 39%;
+        left: -1%;
+    }
+
+
+    .matrix-domain-ml {
+        top: 70%;
+        left: 5%;
+    }
+
+
+    .matrix-domain-genai {
+        top: 39%;
+        right: -1%;
+    }
+
+
+    .matrix-domain-automation {
+        top: 70%;
+        right: 5%;
+    }
+
+
+    .matrix-core {
+        width: 125px;
+        height: 125px;
+    }
+
+
+    .matrix-core-ring-one {
+        width: 125px;
+        height: 125px;
+    }
+
+
+    .matrix-core-ring-two {
+        width: 98px;
+        height: 98px;
+    }
+
+
+    /* =====================================================
+       MOBILE CENTRAL BLACK CIRCLE
+       ===================================================== */
+
+    .matrix-core-inner {
+        width: 68px;
+        height: 68px;
+        overflow: hidden;
+    }
+
+
+    .matrix-core-label {
+        width: 56px;
+        max-width: 56px;
+        font-size: 0.63rem;
+        line-height: 0.95;
+        letter-spacing: -0.025em;
+    }
+
+
+    .matrix-line-top,
+    .matrix-line-bottom {
+        width: 125px;
+    }
+
+
+    .matrix-line-left,
+    .matrix-line-right {
+        width: 100px;
+    }
+
+
+    .matrix-line-diagonal-left,
+    .matrix-line-diagonal-right {
+        width: 105px;
+    }
+
+
+    .matrix-visual-footer {
+        bottom: 9px;
+        left: 8px;
+        right: 8px;
+        gap: 8px;
+    }
+
+
+    .matrix-visual-footer > span {
+        font-size: 0.42rem;
+        letter-spacing: 0.1em;
+    }
+
+
+    /* ================= INTRO ================= */
+
+    .intro-grid {
+        gap: 40px;
+    }
+
+
+    .intro-text {
+        padding-left: 20px;
+    }
+
+
+    /* ================= SECTION HEADINGS ================= */
+
+    .section-heading {
+        display: block;
+    }
+
+
+    .section-heading .text-link {
+        display: inline-block;
+        margin-top: 25px;
+    }
+
+
+    /* ================= DOMAIN CARDS ================= */
+
+    .domain-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* ================= WHY SECTION ================= */
+
+    .gold-frame {
+        width: 290px;
+        height: 390px;
+    }
+
+
+    .frame-big {
+        font-size: 2.8rem;
+    }
+
+
+    /* ================= LEARNING THROUGH DOING ================= */
+
+    .learning-process {
+        padding: 64px 0;
+    }
+
+
+    .learning-process-intro {
+        margin-bottom: 34px;
+    }
+
+
+    .learning-process-roadmap {
+        grid-template-columns: 1fr;
+        row-gap: 0;
+        padding-left: 0;
+    }
+
+
+    .roadmap-line {
+        display: block;
+        top: 31px;
+        bottom: 31px;
+        left: 31px;
+        right: auto;
+        width: 1px;
+        height: auto;
+    }
+
+
+    .roadmap-step {
+        display: grid;
+        grid-template-columns: 62px 1fr;
+        gap: 25px;
+        padding: 0 0 55px 0;
+        text-align: left;
+        border-right: none !important;
+    }
+
+
+    .roadmap-step:last-child {
+        padding-bottom: 0;
+    }
+
+
+    .roadmap-marker {
+        margin: 0;
+        width: 62px;
+        height: 62px;
+        flex-shrink: 0;
+    }
+
+
+    .roadmap-content {
+        margin-top: 3px;
+    }
+
+
+    .roadmap-content h3 {
+        font-size: 1.45rem;
+        margin-bottom: 10px;
+    }
+
+
+    .roadmap-content p {
+        max-width: 100%;
+        margin: 0;
+        font-size: 0.82rem;
+    }
+
+
+    .learning-process-note {
+        display: none;
+    }
+
+
+    /* ================= CTA ================= */
+
+    .cta-section {
+        padding: 55px 0;
+    }
+
+
+    .cta-section h2 {
+        font-size: 2.35rem;
+    }
+
+
+    .cta-section p {
+        font-size: 0.86rem;
+    }
+
+
+    .about-final-cta {
+        padding: 48px 0;
+    }
+
+
+    .about-cta-content h2 {
+        font-size: 2.2rem;
+    }
+
+
+    .about-cta-content p {
+        font-size: 0.86rem;
+        max-width: 450px;
+    }
+
+
+    .about-cta-content .cta-buttons {
+        margin-top: 18px;
+    }
+
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .cta-buttons .btn {
+        width: 100%;
+    }
+
+
+    /* ================= FOOTER ================= */
+
+    .site-footer,
+    .footer {
+        padding-top: 55px;
+    }
+
+
+    .footer-main,
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 25px;
+        padding-bottom: 45px;
+    }
+
+
+    .footer-institute {
+        grid-column: 1 / -1;
+        max-width: 100%;
+    }
+
+
+    .footer-label,
+    .footer-column h4 {
+        font-size: 0.65rem;
+    }
+
+
+    .footer-column a {
+        font-size: 0.75rem;
+    }
+
+
+    .footer-socials {
+        gap: 8px;
+    }
+
+
+    .footer-social {
+        width: 37px;
+        height: 37px;
+    }
+
+
+    .footer-social svg {
+        width: 16px;
+        height: 16px;
+    }
+
+
+    .footer-connect-text {
+        font-size: 0.68rem;
+    }
+
+
+    .footer-bottom-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+
+    /* =====================================================
+       COURSES
+       ===================================================== */
+
+    .page-hero {
+        padding: 75px 0;
+    }
+
+
+    .page-hero-index strong {
+        font-size: 4rem;
+    }
+
+
+    /* ================= COURSES HERO ================= */
+
+    .courses-page-hero {
+        padding: 55px 0 60px;
+    }
+
+
+    .courses-page-hero .page-hero-content h1 {
+        max-width: 100%;
+        font-size: 2rem;
+        line-height: 1.02;
+        letter-spacing: -0.045em;
+    }
+
+
+    .courses-page-hero .page-hero-content h1 span {
+        white-space: nowrap;
+    }
+
+
+    .courses-page-hero .page-hero-content p {
+        margin-top: 20px;
+        font-size: 0.86rem;
+        line-height: 1.7;
+        max-width: 100%;
+    }
+
+
+    /* ================= COURSE INTRO ================= */
+
+    .course-intro-grid {
+        gap: 38px;
+    }
+
+
+    .course-intro h2 {
+        font-size: 2.35rem;
+        max-width: 100%;
+    }
+
+
+    .course-intro-accent {
+        width: 250px;
+        margin-top: 25px;
+    }
+
+
+    .course-intro-accent-dot {
+        width: 14px;
+        height: 14px;
+    }
+
+
+    .course-intro-accent-line {
+        width: 205px;
+    }
+
+
+    .course-intro-text {
+        padding-left: 20px;
+    }
+
+
+    .course-intro-text p {
+        font-size: 0.88rem;
+        line-height: 1.75;
+    }
+
+
+    /* ================= LEARNING PLANS ================= */
+
+    .course-catalog {
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+
+
+    .catalog-header {
+        margin-bottom: 28px;
+    }
+
+
+    .catalog-header h2 {
+        font-size: 2.15rem;
+        white-space: nowrap;
+        letter-spacing: -0.045em;
+    }
+
+
+    .course-filters {
+        gap: 7px;
+        margin-bottom: 35px;
+        padding-bottom: 20px;
+    }
+
+
+    .filter-btn {
+        padding: 9px 12px;
+        font-size: 0.68rem;
+    }
+
+
+    .courses-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        grid-auto-rows: auto;
+    }
+
+
+    /*
+     * All four mobile cards use the same minimum height.
+     */
+    .course-card {
+        height: auto;
+        min-height: 650px;
+        padding: 28px;
+    }
+
+
+    .course-card h3 {
+        font-size: 1.55rem;
+    }
+
+
+    .course-symbol {
+        margin-top: 35px;
+        margin-bottom: 23px;
+    }
+
+
+    .course-modules {
+        margin-top: 25px;
+    }
+
+
+    .course-modules ul {
+        grid-template-columns: 1fr;
+    }
+
+
+    /*
+     * These are no longer used by the current course cards,
+     * but the rules remain harmless for legacy elements.
+     */
+    .course-meta {
+        left: 28px;
+        bottom: 76px;
+    }
+
+
+    .course-link {
+        left: 28px;
+        bottom: 29px;
+    }
+
+
+    /* ================= LEARNING PATH ================= */
+
+    .path-header h2 {
+        font-size: 2.35rem;
+        line-height: 1.08;
+    }
+
+
+    .path-header h2 span {
+        display: block;
+    }
+
+
+    .path-header p {
+        margin-top: 18px;
+        font-size: 0.88rem;
+    }
+
+
+    .path-grid {
+        grid-template-columns: 1fr;
+        margin-top: 45px;
+    }
+
+
+    .path-step {
+        min-height: 260px;
+    }
+
+
+    .course-note-grid > div:last-child {
+        padding-left: 20px;
+    }
+
+
+    /* ================= COURSES FINAL CTA ================= */
+
+    .courses-final-cta {
+        padding: 48px 0;
+    }
+
+
+    .courses-final-cta h2 {
+        font-size: 2.2rem;
+        line-height: 1.06;
+    }
+
+
+    .courses-final-cta p {
+        font-size: 0.84rem;
+        max-width: 420px;
+        line-height: 1.6;
+    }
+
+
+    .courses-final-cta .cta-buttons {
+        margin-top: 18px;
+    }
+
+
+    /* ================= ABOUT ================= */
+
+    .about-page-hero {
+        padding: 55px 0 60px;
+    }
+
+
+    .about-page-hero .page-hero-content h1,
+    .about-page-hero .about-hero-title {
+        max-width: 100%;
+        font-size: 2rem;
+        line-height: 1.02;
+        letter-spacing: -0.045em;
+    }
+
+
+    .about-page-hero .page-hero-content p {
+        margin-top: 20px;
+        font-size: 0.86rem;
+        line-height: 1.7;
+        max-width: 100%;
+    }
+
+
+    /* ---------- OUR WHY ---------- */
+
+    .about-story {
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+
+
+    .about-story-grid {
+        gap: 40px;
+    }
+
+
+    .about-story-title {
+        font-size: 2.15rem;
+        max-width: 100%;
+    }
+
+
+    .about-story-accent {
+        margin-top: 28px;
+        width: 250px;
+    }
+
+
+    .about-story-accent-line {
+        width: 205px;
+    }
+
+
+    .about-story-accent-dot {
+        width: 14px;
+        height: 14px;
+    }
+
+
+    .about-story-content,
+    .about-practice-content {
+        padding-left: 20px;
+    }
+
+
+    .about-story-content p {
+        font-size: 0.88rem;
+        line-height: 1.75;
+    }
+
+
+    .about-story-orbit-left {
+        width: 400px;
+        height: 400px;
+        left: -345px;
+        top: 100px;
+    }
+
+
+    .about-story-orbit-left::before {
+        width: 310px;
+        height: 310px;
+        left: 55px;
+        top: 45px;
+    }
+
+
+    .about-story-orbit-left::after {
+        width: 190px;
+        height: 190px;
+        left: 115px;
+        top: 110px;
+    }
+
+
+    .about-story-orbit-left span {
+        left: 350px;
+        top: 255px;
+    }
+
+
+    .about-story-orbit-right {
+        width: 300px;
+        height: 300px;
+        right: -250px;
+        bottom: -160px;
+    }
+
+
+    .about-story-orbit-right::before {
+        width: 225px;
+        height: 225px;
+    }
+
+
+    /* ---------- WHY AI MATRIX ---------- */
+
+    .about-name-intro {
+        margin-bottom: 42px;
+    }
+
+
+    .about-name-intro h2 {
+        font-size: 2.3rem;
+        max-width: 100%;
+    }
+
+
+    .about-name-intro h2 span {
+        white-space: normal;
+    }
+
+
+    .about-name-intro p {
+        margin-top: 18px;
+        font-size: 0.88rem;
+    }
+
+
+    .ai-matrix-block {
+        padding: 27px;
+        min-height: 220px;
+    }
+
+
+    .ai-matrix-label {
+        font-size: 3.1rem;
+    }
+
+
+    .ai-matrix-description {
+        margin-top: 32px;
+    }
+
+
+    .ai-matrix-connector {
+        min-height: 65px;
+    }
+
+
+    .ai-matrix-connector span {
+        width: 46px;
+        height: 46px;
+    }
+
+
+    /* ---------- PRACTICAL LEARNING ---------- */
+
+    .about-practice-heading h2 {
+        font-size: 2.3rem;
+        max-width: 100%;
+    }
+
+
+    .about-practice-content p {
+        font-size: 0.88rem;
+    }
+
+
+    /* ---------- HOW WE TEACH ---------- */
+
+    .about-learning-header {
+        margin-bottom: 45px;
+    }
+
+
+    .about-learning-header h2 {
+        font-size: 2.3rem;
+        max-width: 100%;
+    }
+
+
+    .about-learning-header p {
+        font-size: 0.88rem;
+        margin-top: 18px;
+    }
+
+
+    .learning-format-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .learning-format-card {
+        min-height: 280px;
+    }
+
+
+    .about-vision {
+        padding: 85px 0;
+    }
+
+
+    .vision-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+
+    .vision-number {
+        font-size: 5rem;
+    }
+
+
+    /* ================= CONTACT ================= */
+
+    .contact-page-hero {
+        padding: 55px 0 60px;
+    }
+
+
+    .contact-page-hero .page-hero-content h1 {
+        max-width: 100%;
+        font-size: 2rem;
+        line-height: 1.02;
+        letter-spacing: -0.045em;
+    }
+
+
+    .contact-page-hero .page-hero-content p {
+        margin-top: 20px;
+        font-size: 0.86rem;
+        line-height: 1.7;
+        max-width: 100%;
+    }
+
+
+    .contact-main-grid {
+        gap: 45px;
+    }
+
+
+    .contact-form-wrapper {
+        padding: 25px;
+    }
+
+
+    .contact-detail {
+        margin-top: 30px;
+    }
+
+
+    /* ================= ENQUIRY MODAL ================= */
+
+    .enquiry-modal {
+        padding: 12px;
+        align-items: center;
+    }
+
+
+    .enquiry-modal-dialog {
+        width: 100%;
+        max-height: 94vh;
+        padding: 25px 20px 22px;
+        border-radius: 14px;
+    }
+
+
+    .enquiry-modal-header {
+        padding-right: 40px;
+        margin-bottom: 22px;
+    }
+
+
+    .enquiry-modal-header h2 {
+        font-size: 2rem;
+    }
+
+
+    .enquiry-modal-header p {
+        font-size: 0.82rem;
+    }
+
+
+    .enquiry-modal .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+
+    .enquiry-modal .form-group {
+        margin-bottom: 15px;
+    }
+
+
+    .enquiry-modal-close {
+        top: 12px;
+        right: 12px;
+        width: 34px;
+        height: 34px;
+    }
+
+
+    .enquiry-modal-submit {
+        padding: 14px 18px;
+    }
+
+}
